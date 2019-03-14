@@ -6,8 +6,8 @@ require_relative "restricted_array.rb"
 
 # Calculates the length of the restricted array. All values are integers.
 # The restricted_array is terminated by 'nil' i.e. array[length] = nil
-# Time complexity: ?
-# Space complexity: ?
+# Time complexity: Linear time complexity, O(n)
+# Space complexity: O(1)
 def length(array)
   length = 0
   while array[length] != nil
@@ -17,49 +17,98 @@ def length(array)
 end
 
 # Prints each integer values in the array
-# Time complexity: ?
-# Space complexity: ?
+# Time complexity: O(n)
+# Space complexity: O(1)
 def print_array(array)
-  raise NotImplementedError
+  len = length(array)
+  i = 0
+  while i < len
+    print array[i]
+    print " "
+    i += 1
+  end
+  puts
 end
 
 # For an unsorted array, searches for 'value_to_find'.
 # Returns true if found, false otherwise.
-# Time complexity: ?
-# Space complexity: ?
+# Time complexity: O(n)
+# Space complexity: O(1)
 def search(array, length, value_to_find)
-  raise NotImplementedError
+  i = 0
+  length.times do |i|
+    return true if array[i] == value_to_find
+  end
+  return false
 end
 
 # Finds and returns the largest integer value the array
 # Assumes that the array is not sorted.
-# Time complexity: ?
-# Space complexity: ?
+# Time complexity: O(n)
+# Space complexity: O(1)
 def find_largest(array, length)
-  raise NotImplementedError
+  match = array[0]
+  length.times do |i|
+    if array[i] > match
+      match = array[i]
+    end
+  end
+  return match
 end
 
 # Finds and returns the smallest integer value in the array
 # Assumes that the array is not sorted.
-# Time complexity: ?
-# Space complexity: ?
+# Time complexity: O(n)
+# Space complexity: O(1)
 def find_smallest(array, length)
-  raise NotImplementedError
+  match = array[0]
+  length.times do |i|
+    if array[i] < match
+      match = array[i]
+    end
+  end
+  return match
 end
 
 # Reverses the values in the integer array in place
-# Time complexity: ?
-# Space complexity: ?
+# Time complexity: O(n)
+# Space complexity: O(1)
 def reverse(array, length)
-  raise NotImplementedError
+  # parallel assignment a, b=b, a
+  i = 0
+  j = length - 1
+  while i < j
+    temp = array[i]
+    array[i] = array[j]
+    array[j] = temp
+    i += 1
+    j -= 1
+  end
+  return array
 end
 
 # For an array sorted in ascending order, searches for 'value_to_find'.
 # Returns true if found, false otherwise.
-# Time complexity: ?
-# Space complexity: ?
+# Time complexity: (Ologn)
+# Space complexity: O(1)
 def binary_search(array, length, value_to_find)
-  raise NotImplementedError
+  low = array[0]
+  high = array[length - 1]
+  mid = (high + low)/2
+  i = 0
+  while array[i] != nil
+    if array[i] == value_to_find
+      return true
+    elsif mid > value_to_find
+      high = array[mid - 1]
+    elsif mid < value_to_find
+      low = array[mid + 1]
+    end
+  end
+  if array[0] == value_to_find
+    return true
+  end
+  return false
 end
 
 # Helper method provided to sort the array in ascending order
