@@ -35,7 +35,6 @@ end
 # Time complexity: O(n)
 # Space complexity: O(1)
 def search(array, length, value_to_find)
-  i = 0
   length.times do |i|
     return true if array[i] == value_to_find
   end
@@ -94,21 +93,8 @@ end
 def binary_search(array, length, value_to_find)
   low = array[0]
   high = array[length - 1]
-  mid = (high + low)/2
+  mid = (high + low) / 2
   i = 0
-  while array[i] != nil
-    if array[i] == value_to_find
-      return true
-    elsif mid > value_to_find
-      high = array[mid - 1]
-    elsif mid < value_to_find
-      low = array[mid + 1]
-    end
-  end
-  if array[0] == value_to_find
-    return true
-  end
-  return false
 end
 
 # Helper method provided to sort the array in ascending order
