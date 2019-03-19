@@ -91,10 +91,23 @@ end
 # Time complexity: (Ologn)
 # Space complexity: O(1)
 def binary_search(array, length, value_to_find)
-  low = array[0]
-  high = array[length - 1]
-  mid = (high + low) / 2
-  i = 0
+  low = 0
+  high = length - 1
+  return false if array == nil
+  while low < high
+    mid = (high + low) / 2
+    if array[mid] == value_to_find
+      return true
+    elsif array[high] == value_to_find
+      return true
+    elsif array[mid] > value_to_find
+      high = mid - 1
+    elsif array[mid] < value_to_find
+      low = mid + 1
+    end
+    return true if array[0] == value_to_find
+    return false
+  end
 end
 
 # Helper method provided to sort the array in ascending order
